@@ -1,0 +1,38 @@
+.AddDialogContentContainer {
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+}
+
+.AddDialogOrderId,
+.AddOrderCurrencyPairData {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.AddDialogSideContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.AddDialogInputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.AddDialogButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 10px;
+}

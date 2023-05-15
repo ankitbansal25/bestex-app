@@ -1,0 +1,12 @@
+.PosiitonsTableHeading {
+    background: lightgrey;
+    border: 1px solid black;
+}
+
+.PosiitonsTableBody {
+    text-align: center;
+}
+
+.PositionsTableData {
+    border: 1px solid black;
+}

@@ -1,6 +1,6 @@
 export const CurrencyPairCircuitLimits = {
     upperLimit: 0.05,
-    lowerLimit: -0.05
+    lowerLimit: -0.05,
 }
 
 export const CurrnecyPairTickSizes = {
@@ -8,5 +8,5 @@ export const CurrnecyPairTickSizes = {
     USDCHN: 0.0001,
     EURUSD: 0.00001,
     USDJPY: 0.01,
-    USDGBP: 0.00001
+    USDGBP: 0.00001,
 }

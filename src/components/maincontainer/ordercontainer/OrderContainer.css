@@ -1,0 +1,13 @@
+.OrderContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.OrderContainNavItem {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    flex:  1;
+    padding: 16px;
+}

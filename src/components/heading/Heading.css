@@ -1,0 +1,14 @@
+.HeadingContainer {
+    background: lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Heading {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    transform: translateX(50px);
+}

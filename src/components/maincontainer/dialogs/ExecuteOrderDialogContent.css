@@ -1,0 +1,37 @@
+.ExecuteOrderDialogContainer {
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ExecuteOrderDialogContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.ExecuteOrderDialogSideContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ExecuteOrderDialogInputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.ExecuteOrderDialogButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 10px;
+}

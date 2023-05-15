@@ -1,13 +1,24 @@
-import { Order } from "../../../models/order";
-import OrderList from "./OrderList";
+import { Order } from '../../../models/order'
+import OrderList from './OrderList'
 
-export default function ChildOrderContainer({orders}: ChildOrderContainerProps){
+/**
+ * ChildOrderContainer Component
+ */
+export default function ChildOrderContainer({
+    orders,
+}: ChildOrderContainerProps) {
     return (
-      <OrderList data={orders} actions={[]} handleOrderAction={() => {}}></OrderList>
+        <OrderList
+            data={orders}
+            actions={[]}
+            handleOrderAction={() => {}}
+        ></OrderList>
     )
-  }
+}
 
-
+/**
+ * ChildOrderContainer Component Props
+ */
 interface ChildOrderContainerProps {
-     orders: Array<Order>;
-}  
+    orders: Array<Order>
+}

@@ -1,0 +1,6 @@
+.MainContainer {
+    display: flex; 
+    flex-direction: row;
+    height: 100%;
+    min-height: 600px;
+} 

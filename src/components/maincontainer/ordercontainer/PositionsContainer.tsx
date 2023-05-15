@@ -1,35 +1,53 @@
-import { Table } from "react-bootstrap";
-import { QuantityPrice } from "./OrderContainer";
+import { Table } from 'react-bootstrap'
+import { QuantityPrice } from './OrderContainer'
+import './PositionsContainer.css'
 
-export default function PositionsContainer({dataMap}: PositionsContainerProps){
-    const keys = Array.from(dataMap.keys());
-    const values = Array.from(dataMap.values());
+/**
+ * PositionsContainer Component
+ */
+export default function PositionsContainer({
+    dataMap,
+}: PositionsContainerProps) {
+    const keys = Array.from(dataMap.keys())
+    const values = Array.from(dataMap.values())
     return (
-      <Table style={{width: '-webkit-fill-available'}} striped bordered hover size="sm">
-        <thead>
-      <tr>
-        <th style={{background: 'lightgrey',border: '1px solid black'}}>Symbol</th>
-        <th style={{background: 'lightgrey', border: '1px solid black'}}>Net Quantity</th>
-        <th style={{background: 'lightgrey',border: '1px solid black'}}>Average Price</th>
-      </tr>
-    </thead>
-    {keys.map((key, index) => {
-      return (
-        <tbody key={key} style={{textAlign: 'center'}}>
-          <tr>
-            <td style={{border: '1px solid black'}}>{key}</td>
-            <td style={{border: '1px solid black'}}>{values[index].totalTradedQuantity}</td>
-            <td style={{border: '1px solid black'}}>{ 
-              values[index].totalPrice / values[index].totalCount
-            }</td>
-          </tr>
-        </tbody>
-      )
-    })}
+        <Table
+            style={{ width: '-webkit-fill-available' }}
+            striped
+            bordered
+            hover
+            size="sm"
+        >
+            <thead>
+                <tr>
+                    <th className="PosiitonsTableHeading">Symbol</th>
+                    <th className="PosiitonsTableHeading">Net Quantity</th>
+                    <th className="PosiitonsTableHeading">Average Price</th>
+                </tr>
+            </thead>
+            {keys.map((key, index) => {
+                return (
+                    <tbody key={key} className="PosiitonsTableBody">
+                        <tr>
+                            <td className="PositionsTableData">{key}</td>
+                            <td className="PositionsTableData">
+                                {values[index].totalTradedQuantity}
+                            </td>
+                            <td className="PositionsTableData">
+                                {values[index].totalPrice /
+                                    values[index].totalCount}
+                            </td>
+                        </tr>
+                    </tbody>
+                )
+            })}
         </Table>
     )
-  }
+}
 
-  interface PositionsContainerProps {
+/**
+ * PositionsContainer Component Props
+ */
+interface PositionsContainerProps {
     dataMap: Map<string, QuantityPrice>
-  }
+}
