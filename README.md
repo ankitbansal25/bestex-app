@@ -6,41 +6,165 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## Versions
+node - v16.19.0
+
+npm - 8.19.3
+
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Code
 
-### `npm test`
+## Folder Structure
+    src 
+        - apis 
+        - components
+            common
+            mainconainer
+            heading
+        - utils 
+        - mock
+        - models
+    App.tsx
+    package.json
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## APIs
+We have watchlist and order apis inside the apis folder. Currently, we use the mock data as the response of the apis.
 
-### `npm run build`
+1. fetchLastDayCurrencyPairClosePrices
+2. fetchOrders
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Component Hierarchy
+![Component Hierarchy](./src/docs/ComponentHierarchy.jpg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Main Components
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+| Component   | Details |
+| ------------- | ------------- |
+| App.tsx  | Entry Point of the app.  |
+| WatchList.tsx  | WatchList component, It shows the currency price, which updates every second.  |
+| OrderContainer.tsx  | Handles the navigation between the ParentOrders, ChildOrders &  Positions Tab|
+| ParentOrderContainer.tsx  | Handles the Parent Orders & Actions  |
+| ChildOrderContainer.tsx  | Shows the Child Order Data  |
+| PositionsContainer.tsx  | Show the posiitons data  |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Models
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+All the models are defined in the models folder in the source directory.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+// User
+User {
+    id: string;
+    name: string;
+    email: string; 
+}
 
-## Learn More
+// CurrencyPair, The data retrieved from the watchlist api.
+CurrencyPair {
+    id: string,
+    name: string,
+    value: string
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+// Currency Pair Data, Used internally in the WatchList component for managing the Currency Data
+CurrencyPairData {
+    id: string
+    name: string
+    closePrice: number
+    updatePrice: number
+    percentChange: number
+    actualChange: number
+    tickSize: number
+    maxFactorX: number
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+// Order
+Order {
+    orderId: string, 
+    symbol: string,
+    price: number,
+    quantity: number,
+    side: Side,
+    orderStatus: OrderStatus,
+}
+```
+### Types
+
+```
+// Parent Order
+ParentOrder = Order & {
+    tradedQuantity?: number,
+    spreadCost?: number,
+    remainingQuantity: number,
+    childOrders?: Array<Order>
+}
+
+// Child Order
+ChildOrder = Order & {
+    parentOrderId: string
+}
+
+```
+## Mock Data
+The mock api responses are defined in the mock folder in data.ts file. 
+
+## Formulaes Used
+
+#### Circuit Limit
+
+limit = +/- 5%  
+
+#### Tick Size
+
+It is provided for each currency pair defined in constants.ts file in the utils folder.
+
+#### Update Price
+UpdatePrice = ClosePrice + (+/- x * tickSize)
+
+#### x calculation
+It is referred as maxXFactor in the code. The x should be generated such that the variation of the update price should be in the circuit limits.
+
+```
+limit = 0.05
+maxDiff = ClosePrice * limit
+maxXFactor =  Math.floor(maxDiff / tickSize)
+
+ex.
+closePrice = 82.5500, tickSize = 0.025, limit = +/-5%
+maxDiff = (closePrice* upperLimit)/100 = 4.1275
+maxXFactor = Math.floor(maxDiff / tickSize) = 165
+```
+So, using above formulae, x can varies between 0 to maxXFactor.
+
+## Screenshots
+
+First Look of the bestex app.
+![First Look of the App](./src/docs/Firstlook.png)
+
+WatchList - Add Order on hover
+![WatchList- Add Order](./src/docs/Watchlist.png)
+
+Add Order Dialog
+![Add Order Dialog](./src/docs/AddOrderDialog.png)
+
+Shw Order Actions - Execute Orders, Show Child Orders & Cancel Order
+![Order Actions](./src/docs/OrderActions.png)
+
+Execute Order Dialog
+![Execute Order Dialog(./src/docs/ExecuteOrderDialog.png)
+
+Show Child Orders
+![Show Child Orders](./src/docs/ShowChildOrders.png)
+
+Cancel Order Dialog
+![Cancel Order Dialog](./src/docs/CancelOrderDialog.png)
+
+Positions Tab
+![Positions Tab](./src/docs/PositionsTab.png)
+
