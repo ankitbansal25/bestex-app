@@ -157,7 +157,7 @@ Shw Order Actions - Execute Orders, Show Child Orders & Cancel Order
 ![Order Actions](./src/docs/OrderActions.png)
 
 Execute Order Dialog
-![Execute Order Dialog(./src/docs/ExecuteOrderDialog.png)
+![Execute Order Dialog](./src/docs/ExecuteOrderDialog.png)
 
 Show Child Orders
 ![Show Child Orders](./src/docs/ShowChildOrders.png)
