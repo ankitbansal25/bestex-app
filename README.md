@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with BestEx App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -6,15 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-## Versions
-node - v16.19.0
-
-npm - 8.19.3
-
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Versions
+node - v16.19.0
+
+npm - 8.19.3
 
 # Code
 
